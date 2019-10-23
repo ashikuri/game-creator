@@ -1,59 +1,24 @@
 {
   "name": "game-creator",
-  "productName": "game-creator",
   "version": "1.0.0",
-  "description": "My Electron application description",
-  "main": "app.js",
+  "description": "Electron game",
+  "main": "main.js",
   "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "start": "electron .",
+    "build:windows": "electron-packager . YourGame --overwrite --platform=win32 --arch=x64 --prune=true --out=out",
+    "build:linux": "electron-packager . YourGame --overwrite --platform=linux --arch=x64 --prune=true --out=out",
+    "build:mac": "electron-packager . YourGame --overwrite --platform=darwin --arch=x64 --prune=true --out=out"
   },
   "keywords": [],
-  "author": {
-    "name": "ashikuri"
-  },
+  "author": "ashikuri",
   "license": "MIT",
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "game_creator"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ]
-    }
+  "devDependencies": {
+    "electron": "^5.0.8",
+    "electron-builder": "^21.2.0",
+    "electron-packager": "^14.0.6"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0",
     "ok-enum": "^1.0.5",
     "spiel-engine": "^1.0.3"
-  },
-  "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.45",
-    "@electron-forge/maker-deb": "^6.0.0-beta.45",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.45",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.45",
-    "@electron-forge/maker-zip": "^6.0.0-beta.45",
-    "electron": "7.0.0"
   }
 }
